@@ -1,0 +1,393 @@
+<div class="container tab">
+	<div class="back">
+		<a type="button" href="/" class="btn btn-info"> <span class='glyphicon glyphicon-arrow-left' aria-hidden="true"></span>
+			Back</a>
+	</div>
+	<div class="heading">
+		<h2>Joining Checklist of  {{employee_name}}/ {{employee_id}}</h2>
+	</div>
+	<div class="save">
+		<button type="submit" class="btn btn-info" ng-click="save()">
+			<span class='glyphicon glyphicon-floppy-save' aria-hidden="true"></span>
+				Save
+		</button>
+	</div>
+	<section>
+		<ul ng-init="tab = 1" class="link">
+			<li ng-class="{active:tab===1}">
+			<a href ng-click="tab = 1"><b>HR<b></a>
+			</li>
+			<li ng-class="{active:tab===2}">
+			<a href ng-click="tab = 2"><b>DOCUMENTATION</b></a>
+			</li>
+			<li ng-class="{active:tab===3}">
+			<a href ng-click="tab = 3"><b>R&BD </b></a>
+			</li>
+			<li ng-class="{active:tab===4}">
+			<a href ng-click="tab = 4"><b>NETWORK</b></a>
+			</li>
+			<br><br>
+				<div ng-show="tab === 1">
+				<!--hr--section---start-->
+					<div class="res" align="center">
+						<label>Reponsible person</label>
+							<select ng-model="hr.reponsibleperson" ng-change="update()">
+							<option value="responsible">Select Employee Name</option>
+
+							<option value="{{responsibles.employee_id}}" ng-repeat="responsibles in emp">{{responsibles.employee_name}}</option>
+
+
+						
+							</select>
+					</div>
+					<div class="update">
+						<label>Updated Employee Information Sheet ?</label>
+					</div>
+					<div class="onoffswitch on">
+							<input type="checkbox" name="updated_employee" ng-model="hr.updated_employee" ng-true-value="1" ng-false-value="0" class="onoffswitch-checkbox" id="updated_employee" checked>
+							<label class="onoffswitch-label" for="updated_employee">
+							<span class="onoffswitch-inner"></span>
+							<span class="onoffswitch-switch"></span>
+							</label>
+					</div>
+					<div class="update">
+						<label>Added to Address Book from List of Mss ?</label>
+					</div>
+					<div class="onoffswitch on">
+							<input type="checkbox" name="Added_to_Address_Book" ng-model="hr.Added_to_Address_Book" ng-true-value="1" ng-false-value="0"  class="onoffswitch-checkbox" id="Added_to_Address_Book" checked>
+							<label class="onoffswitch-label" for="Added_to_Address_Book">
+							<span class="onoffswitch-inner"></span>
+							<span class="onoffswitch-switch"></span>
+							</label>
+					</div>
+					<div class="update">
+						<label>Added to Biometric System ?</label>
+					</div>
+					<div class="onoffswitch on">
+							<input type="checkbox" ng-model="hr.Added_to_Biometric" ng-true-value="1" ng-false-value="0" name="Added_to_Biometric" class="onoffswitch-checkbox" id="Added_to_Biometric" checked>
+							<label class="onoffswitch-label" for="Added_to_Biometric">
+							<span class="onoffswitch-inner"></span>
+							<span class="onoffswitch-switch"></span>
+							</label>
+					</div>
+					<div class="update">
+						<label>MSS-Team Folder Updated ?</label>
+					</div>
+					<div class="onoffswitch on">
+						<input type="checkbox" name="MSS_Team_Folder" ng-true-value="1" ng-false-value="0" ng-model="hr.MSS_Team_Folder" class="onoffswitch-checkbox" id="MSS_Team_Folder" checked>
+						<label class="onoffswitch-label" for="MSS_Team_Folder">
+						<span class="onoffswitch-inner"></span>
+						<span class="onoffswitch-switch"></span>
+						</label>
+					</div>
+				<!------------------end-of hr section-------------------->
+			</div>
+			<div ng-show="tab === 2">
+				<!--start-------------of---documentation----------section-->
+				<div class="res" align="center">
+					<label >Reponsible person</label>
+							<select ng-model="doc.docresponsible">
+							<option value="responsible">Select Employee Name</option>
+							<option value="{{responsibles.employee_id}}" ng-repeat="responsibles in emp">{{responsibles.employee_name}}</option>
+							</select>
+				</div>
+				<div class="copy">
+					<label>Copy of Offer Letter Given </label>
+				</div>
+				<div class="onoffswitch off">
+						<input type="checkbox" name="Offer_Letter" ng-model="doc.Offer_Letter" ng-true-value="1" ng-false-value="0" class="onoffswitch-checkbox" id="Offer_Letter" checked>
+						<label class="onoffswitch-label" for="Offer_Letter">
+						<span class="onoffswitch-inner"></span>
+						<span class="onoffswitch-switch"></span>
+						</label>
+				</div>
+				<div class="qual">
+					<label>Qualification Certificates </label>
+				</div>
+				<div class="onoffswitch swt">
+						<input type="checkbox" name="Qualification" ng-model="doc.Qualification" ng-true-value="1" ng-false-value="0" class="onoffswitch-checkbox" id="Qualification" checked>
+						<label class="onoffswitch-label" for="Qualification">
+						<span class="onoffswitch-inner"></span>
+						<span class="onoffswitch-switch"></span>
+						</label>
+				</div>
+				<div class="copy">
+					<label>ID Proof</label>
+				</div>
+				<div class="onoffswitch off">
+						<input type="checkbox" name="ID_Proof" ng-model="doc.ID_Proof" ng-true-value="1" ng-false-value="0" class="onoffswitch-checkbox" id="ID_Proof" checked>
+						<label class="onoffswitch-label" for="ID_Proof">
+						<span class="onoffswitch-inner"></span>
+						<span class="onoffswitch-switch"></span>
+						</label>
+				</div>
+				<div class="qual">
+						<label>Experience/Relieving letter from previous organization </label>
+				</div>
+				<div class="onoffswitch swt">
+						<input type="checkbox" name="Experience" ng-model="doc.Experience" ng-true-value="1" ng-false-value="0" class="onoffswitch-checkbox" id="Experience" checked>
+						<label class="onoffswitch-label" for="Experience">
+						<span class="onoffswitch-inner"></span>
+						<span class="onoffswitch-switch"></span>
+						</label>
+				</div>
+				<div class="copy">
+					<label>Address Proof</label>
+				</div>
+				<div class="onoffswitch off">
+						<input type="checkbox" name="Address_Proof" ng-model="doc.Address_Proof" ng-true-value="1" ng-false-value="0"  class="onoffswitch-checkbox" id="Address_Proof" checked>
+						<label class="onoffswitch-label" for="Address_Proof">
+						<span class="onoffswitch-inner"></span>
+						<span class="onoffswitch-switch"></span>
+						</label>
+				</div>
+				<div class="qual">
+					<label>Medical Certificate & Fitness Certificate </label>
+				</div>
+				<div class="onoffswitch swt">
+						<input type="checkbox" name="Medical" ng-model="doc.Medical" ng-true-value="1" ng-false-value="0" class="onoffswitch-checkbox" id="Medical" checked>
+						<label class="onoffswitch-label" for="Medical">
+						<span class="onoffswitch-inner"></span>
+						<span class="onoffswitch-switch"></span>
+						</label>
+				</div>
+				<div class="copy">
+					<label>Date of Birth certificate</label>
+				</div>
+				<div class="onoffswitch off">
+						<input type="checkbox" name="Date_of_Birth" ng-model="doc.Date_of_Birth" ng-true-value="1" ng-false-value="0" class="onoffswitch-checkbox" id="Date_of_Birth" checked>
+						<label class="onoffswitch-label" for="Date_of_Birth">
+						<span class="onoffswitch-inner"></span>
+						<span class="onoffswitch-switch"></span>
+						</label>
+				</div>
+				<div class="qual">
+					<label>Bank Account Number </label>
+				</div>
+				<div class="onoffswitch swt">
+						<input type="checkbox" name="Bank" ng-model="doc.Bank" ng-true-value="1" ng-false-value="0" class="onoffswitch-checkbox" id="Bank " checked>
+						<label class="onoffswitch-label" for="Bank ">
+						<span class="onoffswitch-inner"></span>
+						<span class="onoffswitch-switch"></span>
+						</label>
+				</div>
+				<div class="copy">
+					<label>Training Certificate if Fresher</label>
+				</div>
+				<div class="onoffswitch off">
+						<input type="checkbox" name="Training_Certificate" ng-model="doc.Training_Certificate" class="onoffswitch-checkbox" id="Training_Certificate" checked>
+						<label class="onoffswitch-label" for="Training_Certificate">
+						<span class="onoffswitch-inner"></span>
+						<span class="onoffswitch-switch"></span>
+						</label>
+				</div>
+				<div class="qual">
+					<label>Joining Report of New Employees </label>
+				</div>
+				<div class="onoffswitch swt">
+						<input type="checkbox" name="Joining" ng-model="doc.Joining" class="onoffswitch-checkbox" id="Joining" checked>
+						<label class="onoffswitch-label" for="Joining">
+						<span class="onoffswitch-inner"></span>
+						<span class="onoffswitch-switch"></span>
+						</label>
+				</div>
+				<div class="copy">
+					<label>Last 3 Salary Slips</label>
+				</div>
+				<div class="onoffswitch off">
+						<input type="checkbox" name="Salary_Slips" ng-model="doc.Salary_Slips" ng-true-value="1" ng-false-value="0" class="onoffswitch-checkbox" id="Salary_Slips" checked>
+						<label class="onoffswitch-label" for="Salary_Slips">
+						<span class="onoffswitch-inner"></span>
+						<span class="onoffswitch-switch"></span>
+						</label>
+				</div>
+				<div class="qual">
+					<label>Code of Conduct and Ethical Standards</label>
+				</div>
+				<div class="onoffswitch swt">
+						<input type="checkbox" name="Code_of_Conduct" ng-model="doc.Code_of_Conduct" ng-true-value="1" ng-false-value="0" class="onoffswitch-checkbox" id="Code_of_Conduct" checked>
+						<label class="onoffswitch-label" for="Code_of_Conduct">
+						<span class="onoffswitch-inner"></span>
+						<span class="onoffswitch-switch"></span>
+						</label>
+				</div>
+				<div class="copy">
+						<label>Passport Size Photographs 8</label>
+				</div>
+				<div class="onoffswitch off">
+						<input type="checkbox" name="Passport_size" ng-model="doc.Passport_size" ng-true-value="1" ng-false-value="0" class="onoffswitch-checkbox" id="Passport_size" checked>
+						<label class="onoffswitch-label" for="Passport_size">
+						<span class="onoffswitch-inner"></span>
+						<span class="onoffswitch-switch"></span>
+						</label>
+				</div>
+				<div class="qual">
+						<label>Employee Agreement</label>
+				</div>
+				<div class="onoffswitch swt">
+						<input type="checkbox" name="Employee_Agreement" ng-true-value="1" ng-false-value="0" ng-model="doc.Employee_Agreement" class="onoffswitch-checkbox" id="Employee_Agreement" checked>
+						<label class="onoffswitch-label" for="Employee_Agreement">
+						<span class="onoffswitch-inner"></span>
+						<span class="onoffswitch-switch"></span>
+						</label>
+				</div>
+				<div class="copy">
+				</div>
+				<div class="off">
+				</div>
+				<div class="ack">
+					<label>Acknowledgement of Appointment Letter</label>
+				</div>
+				<div class="onoffswitch last">
+						<input type="checkbox" name="Acknowledgement" ng-true-value="1" ng-false-value="0" ng-model="doc.Acknowledgement" class="onoffswitch-checkbox" id="Acknowledgement" checked>
+						<label class="onoffswitch-label" for="Acknowledgement">
+						<span class="onoffswitch-inner"></span>
+						<span class="onoffswitch-switch"></span>
+						</label>
+				</div>
+<!------------------------------------end-of--documentation ---section---------------------------->
+			</div>
+			<div ng-show="tab === 3">
+	<!----------start of rbd section---------------------->		
+				<div class="res" align="center">
+					<label>Reponsible person</label>
+							<select ng-model="rbd.rrbdresponsible">
+							<option value="responsible">Select Employee Name</option>
+							<option value="{{responsibles.employee_id}}" ng-repeat="responsibles in emp">{{responsibles.employee_name}}</option>
+							</select>
+				</div>
+				<div class="update">
+						<label>Create Biddle Account</label>
+				</div>
+				<div class="onoffswitch on">
+						<input type="checkbox" name="Create_Biddle" ng-model="rbd.Create_Biddle" ng-true-value="1" ng-false-value="0" class="onoffswitch-checkbox" id="Create_Biddle" checked>
+						<label class="onoffswitch-label" for="Create_Biddle">
+						<span class="onoffswitch-inner"></span>
+						<span class="onoffswitch-switch"></span>
+						</label>
+				</div>
+				<div class="update">
+						<label>Cover Letter / All relevant data</label>
+				</div>
+				<div class="onoffswitch on">
+						<input type="checkbox" name="Cover_Letter" ng-model="rbd.Cover_Letter" ng-true-value="1" ng-false-value="0" class="onoffswitch-checkbox" id="Cover_Letter" checked>
+						<label class="onoffswitch-label" for="Cover_Letter">
+						<span class="onoffswitch-inner"></span>
+						<span class="onoffswitch-switch"></span>
+						</label>
+				</div>
+				<div class="update">
+						<label>Google Drive Access</label>
+				</div>
+				<div class="onoffswitch on">
+						<input type="checkbox" name="Google" ng-model="rbd.Google" ng-true-value="1" ng-false-value="0" class="onoffswitch-checkbox" id="Google" checked>
+						<label class="onoffswitch-label" for="Google">
+						<span class="onoffswitch-inner"></span>
+						<span class="onoffswitch-switch"></span>
+						</label>
+				</div>
+			</div>
+			<!------------end---of----rbd------section--->
+			<div ng-show="tab === 4">
+				<div class="res" align="center">
+					<label>Reponsible person</label>
+							<select ng-model="net.netresponsible">
+							<option value="responsible">Select Employee Name</option>
+							<option value="{{responsibles.employee_id}}" ng-repeat="responsibles in emp">{{responsibles.employee_name}}</option>
+							</select>
+				</div>
+				<div class="update">
+						<label>Added static IP in Firewall?</label>
+				</div>
+				<div class="onoffswitch bid">
+							<input type="checkbox" name="Added_static" ng-model="net.Added_static" ng-true-value="1" ng-false-value="0" class="onoffswitch-checkbox" id="Added_static" checked>
+							<label class="onoffswitch-label" for="Added_static">
+							<span class="onoffswitch-inner"></span>
+							<span class="onoffswitch-switch"></span>
+							</label>
+				</div>
+				<div class="update">
+						<label>Gmail Id – Create strong password and configured in thunderbird?</label>
+				</div>
+				<div class="onoffswitch bid">
+						<input type="checkbox" name="Gmail_Id" ng-model="net.Gmail_Id" ng-true-value="1" ng-false-value="0" class="onoffswitch-checkbox" id="Gmail_Id" checked>
+						<label class="onoffswitch-label" for="Gmail_Id">
+						<span class="onoffswitch-inner"></span>
+						<span class="onoffswitch-switch"></span>
+						</label>
+				</div>
+				<div class="update">
+						<label>Created Skype Id Email should be mss email and strong password?</label>
+				</div>
+				<div class="onoffswitch bid">
+						<input type="checkbox" name="Created_Skype " ng-model="net.Created_Skype"  ng-true-value="1" ng-false-value="0" class="onoffswitch-checkbox" id="Created_Skype " checked>
+						<label class="onoffswitch-label" for="Created_Skype ">
+						<span class="onoffswitch-inner"></span>
+						<span class="onoffswitch-switch"></span>
+						</label>
+				</div>
+				<div class="update">
+						<label>Redmine Account</label>
+				</div>
+				<div class="onoffswitch bid">
+							<input type="checkbox" name="Redmine" ng-model="net.Redmine" ng-true-value="1" ng-false-value="0" class="onoffswitch-checkbox" id="Redmine" checked>
+							<label class="onoffswitch-label" for="Redmine">
+							<span class="onoffswitch-inner"></span>
+							<span class="onoffswitch-switch"></span>
+							</label>
+				</div>
+				<div class="update">
+						<label>Create Bitbucket Account</label>
+				</div>
+				<div class="onoffswitch bid">
+						<input type="checkbox" name="Bitbucket" ng-model="net.Bitbucket" ng-true-value="1" ng-false-value="0" class="onoffswitch-checkbox" id="Bitbucket" checked>
+						<label class="onoffswitch-label" for="Bitbucket">
+						<span class="onoffswitch-inner"></span>
+						<span class="onoffswitch-switch"></span>
+						</label>
+				</div>
+				<div class="update">
+						<label>Create Git Account</label>
+				</div>
+				<div class="onoffswitch bid">
+						<input type="checkbox" name="Git" ng-model="net.Git" ng-true-value="1" ng-false-value="0" class="onoffswitch-checkbox" id="Git" checked>
+						<label class="onoffswitch-label" for="Git">
+						<span class="onoffswitch-inner"></span>
+						<span class="onoffswitch-switch"></span>
+						</label>
+				</div>
+				<div class="update">
+						<label>Create Dropbox Account</label>
+				</div>
+				<div class="onoffswitch bid">
+						<input type="checkbox" name="Dropbox" ng-model="net.Dropbox" ng-true-value="1" ng-false-value="0" class="onoffswitch-checkbox" id="Dropbox" checked>
+						<label class="onoffswitch-label" for="Dropbox">
+						<span class="onoffswitch-inner"></span>
+						<span class="onoffswitch-switch"></span>
+						</label>
+				</div>
+				<div class="update">
+						<label>Create Local Database User</label>
+				</div>
+				<div class="onoffswitch bid">
+						<input type="checkbox" name="Local_Database" ng-model="net.Local_Database" ng-true-value="1" ng-false-value="0" class="onoffswitch-checkbox" id="Local_Database" checked>
+						<label class="onoffswitch-label" for="Local_Database">
+						<span class="onoffswitch-inner"></span>
+						<span class="onoffswitch-switch"></span>
+						</label>
+				</div>
+				<div class="update">
+						<label>Create Local FTP account</label>
+				</div>
+				<div class="onoffswitch bid">
+						<input type="checkbox" name="Local_ftp" ng-model="net.Local_ftp" ng-true-value="1" ng-false-value="0" class="onoffswitch-checkbox" id="Local_ftp" checked>
+						<label class="onoffswitch-label" for="Local_ftp">
+						<span class="onoffswitch-inner"></span>
+						<span class="onoffswitch-switch"></span>
+						</label>
+				</div>
+			</div>
+		<!----------end of network section--------->
+		</ul>
+	</section>
+</div>

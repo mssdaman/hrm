@@ -1,0 +1,49 @@
+<div class="row">
+
+	<div class="dropdown dropdown-header dropdown-menu-right form-group" align="center">
+<select ng-options="employee.employee_name for employee in emp" ng-model="employee" id="menu1" data-toggle="dropdown">
+<option value="">Select Employee Name </option>
+
+</select>
+</div>
+<div align="center" class="form-group" >
+<button type="submit" class="btn btn-info btn-group btn-group-lg" role="group" ng-click="toggle()"><strong>Initiate Joining</strong></button>
+</div>
+</div>
+<div class="row">
+<div class="input-group col-sm-4">
+    <input type="text" ng-model="searchText" class="form-control" placeholder="Search by Employee Id,Name">
+    <span class="input-group-addon glyphicon glyphicon-search" aria-hidden="true" >
+        <i class="fa fa-search"></i>
+    </span>
+</div> 
+</div>
+	<h4 align="center">Employee Listing</h4>
+		
+		
+<div>
+
+<table class="table table-condensed table-hover table-striped table-bordered ">
+			
+				<tr>
+					<th><span class="glyphicon glyphicon-chevron-down" aria-hidden="true" >  Employee ID</th>
+					<th><span class="glyphicon glyphicon-chevron-down" aria-hidden="true" >  Employee Name</th>
+					<th><span class="glyphicon glyphicon-chevron-down" aria-hidden="true" >  Pending Section ?</th>
+					<th><span class="glyphicon glyphicon-chevron-down" aria-hidden="true" >  Status</th>
+					<th><span class="glyphicon glyphicon-chevron-down" aria-hidden="true" >  Action</th>
+				</tr>
+			
+		
+		
+  <tr  ng-repeat="employee in employees | filter:searchText">
+     
+		
+			<td>{{employee.employee_id}}</td>
+			<td>{{employee.employee_name}}</td>
+			<td>{{employee.pending_section}}</td>
+			<td>{{employee.status}} </td>
+			
+			<td><a type="button" href="/documentation/{{employee.employee_id}}" class="btn btn-primary"><span class='glyphicon glyphicon-eye-open' aria-hidden="true"></span> </a></td>
+    </tr>
+</table>
+	</div>
